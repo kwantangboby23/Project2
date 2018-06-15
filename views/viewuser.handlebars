@@ -64,6 +64,9 @@
             <li class="nav-item">
                 <a class="nav-link" id="follow-tab" data-toggle="tab" href="#follow" role="tab" aria-controls="follow" aria-selected="false">Following</a>
             </li>
+            <li class="nav-item">
+            <a class="nav-link" id="events-tab" data-toggle="tab" href="#myevents" role="tab" aria-controls="events" aria-selected="false">My Events</a>
+        </li>
             {{/if}}
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -96,6 +99,41 @@
                     {{/each}}
                 </ul>
             </div>
+
+            <div class="tab-pane fade" id="myevents" role="tabpanel" aria-labelledby="events-tab">
+  
+             {{#each userAttendEvents}}
+      
+<div class="d-flex justify-content-between thread-list">
+      <div class=" d-flex flex-row mr-auto align-self-center">
+
+    <div class=" d-flex flex-row mr-auto align-self-center">
+       
+        <div class="d-flex flex-column align-self-center">
+            <div class="details-top">
+                <div class="post-title">
+                    <h1><a href="/events/{{./id}}">{{./eventName}}</a></h1>
+                    <p>{{./eventDate}}</p>
+                    <p>{{./startTime}} - {{./endTime}}</p>
+                </div>
+                
+            </div>
+            <div class="details-middle d-inline-flex">
+                 {{#each EventCreator}}
+                <div class="post-author mr-2">Started by: 
+                    <a href="/viewuser/{{this.userId}}">{{this.name}}</a>
+                </div>
+                {{/each}}
+                <div class="post-cat mr-2">Category: <a href="/events/sort/"{{./category}}>{{this.category}}</a></div>
+            </div>
+        </div>
+    </div>
+  
+</div>
+
+{{/each}}
+          
+        </div>
             {{/if}}
         </div>
     </div>
